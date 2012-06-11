@@ -16,35 +16,35 @@ This is the brain of the operation. I use an outdated MSI Wind PC running Ubuntu
 
 The following services or similar alternatives should run on the machine.
 
-## DLNA ##
+### DLNA ###
 Explaining [DLNA](http://en.wikipedia.org/wiki/Digital_Living_Network_Alliance) is outside the scope of this document, but having a basic
 understanding of the terms will be helpful. The [official site provides a good start](http://www.dlna.org/dlna-for-industry/digital-living/how-it-works/dlna-device-classes/digital-media-server). The definitions can be confusing, and I'm not sure if things are labeled properly below, so feel free to call me an idiot if you're a DLNA wizard.
 
-## DLNA Digital Media Server (DMS) ##
+### DLNA Digital Media Server (DMS) ###
 A DLNA DMS makes the files on the HTPC server available to Digital Media
 Player (DMP) and Digital Media Controller (DMC) devices. 
 
-### Mediatomb ###
+#### Mediatomb ####
 [MediaTomb](http://mediatomb.cc/) is a solid DMS. In the setup described here, it is used primarily for video. Any media rsync'd from the seedbox will be available immediately thanks to the wb_rsync script. In the examples below, MediaTomb is setup to scan /localmedia/video for new media.
 
-### MiniDLNA ###
+#### MiniDLNA ####
 [MiniDLNA](http://sourceforge.net/projects/minidlna/) is a bare-bones media
 server which also works well. Sometimes it's nice to have two separate servers,
 which poses no problem as long as they run on different ports.
 
-### Squeezebox Server ###
+#### Squeezebox Server ####
 I stream my mp3 collection to the stereo with an outdated [Squeezebox Duet](http://www.logitech.com/en-us/support/speakers-audio/3817). The current product is the [Squeezebox Touch](http://www.logitech.com/en-us/speakers-audio/wireless-music-systems/squeezebox-touch). The HTCP server runs the [Logitech Media Server](http://en.wikipedia.org/wiki/Logitech_Media_Server) software which indexes and makes music files available through the Squeezebox hardware, which connects to your A/V receiver. Squeezebox Server is also a DLNA DMS.
 
 The squeezebox software can additionally point to the rsync'd download location (/localmedia/downloaded), so all mp3 downloads can be available on the stereo shortly after they are rsync'd. 
 
-## Continuous rsync script - wb_rsync ##
+### Continuous rsync script - wb_rsync ###
 This script is run out of cron to continuously sync all media downloaded from the seedbox. The script source is uploaded to this repo. The cron job below uses setlock from the daemontools package to prevent process stacking / overlap.
 
 	*/14 * * * * /usr/bin/setlock -nX ~/var/run/wb_rysnc.lock ~/bin/wb_rsync 2>&1 >> /var/log/wb_rsync.log 
 
 The example script downloads content from the seedbox to /localmedia/downloaded, and also unpacks and rar archives (common for video torrents) and places the video files in the /localmedia/video directory, for access by MediaTomb.
 
-## DYNDNS ##
+### DYNDNS ###
 Although unnecessary, it can be useful to have remote access to the HTPC server. I use http://zoneedit.com and the [zoneclient.py](http://zoneclient.sourceforge.net/) script to make sure the DNS record remains up to date if your ISP decides to change your assigned IP. Here is the crontab entry:
 
     */29 * * * * /usr/bin/python ~/opt/zoneclient/zoneclient.py --syslog -d ~/opt/zoneclient -r http://dynamic.zoneedit.com/checkip.html --acctfile ~/opt/zoneclient/acctinfo
@@ -55,12 +55,12 @@ itself, for a multitude of reasons, using a [seedbox](http://en.wikipedia.org/wi
 
 There are a ton of seedbox options. I have had great luck with [Whatbox](https://whatbox.ca/). They provide some nifty web interfaces including ruTorrent.
 
-## rTorrent ##
+### rTorrent ###
 [rTorrent](http://libtorrent.rakshasa.no/) is an ncurses based torrent client. When torrents are uploaded to the seedbox, they should go into a watched directory (~/torrents). This means rTorrent will detect new torrents and begin downloading (to ~/seeding) automatically. [Enabling encryption](https://wiki.archlinux.org/index.php/RTorrent#Additional_settings) is recommended.
 
 There are a couple of good rTorrent guides available, here is one: http://fsk141.com/rtorrent-the-complete-guide
 
-## irssi ##
+### irssi ###
 
 Some torrent trackers offer an IRC feed of their announce list. You can use [irssi](http://irssi.org/) to run a bot in these channels and auto-download things you are interested in.
 
@@ -72,7 +72,7 @@ easily transfer them out to your seedbox for downloading and auto-sync. You can 
     alias scp_tor='scp ~/Downloads/*.torrent username@seedbox:~/torrents && rm ~/Downloads/*.torrent'
 	alias twbs='ssh htpc tail -f /var/log/wb_rsync.log'
 
-## Torrent Downloads ##
+### Torrent Downloads ###
 Many trackers offer [pirated content](http://theoatmeal.com/comics/game_of_thrones), and private ones usually do so without the ads. There are also a few torrent trackers which feature torrents to free and legal media content:
  * http://vodo.net
  * http://www.dimeadozen.org/
@@ -89,12 +89,12 @@ If you have a DLNA-enabled TV or A/V receiver, it may act as a DMP and a DMR, pu
 
 I use the following DMPs:
 
-## WD Live TV Plus ##
+### WD Live TV Plus ###
 This [device](http://wdc.com/en/products/products.aspx?id=320) converts DLNA
 streams, attached storage files, and other internet-based media to HDMI to be
 consumed by your TV. 
 
-## Squeezebox ##
+### Squeezebox ###
 See Squezebox Server above - this is the hardware component. The
 [Logitech Squeezebox systems](http://www.logitech.com/en-us/speakers-audio/wireless-music-systems) are dedicated music streaming devices with accompanying software. While the software is not as slick as iTunes, it is open source software and runs on Linux.
 
