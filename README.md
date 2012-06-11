@@ -24,15 +24,15 @@ understanding of the terms will be helpful. The [official site provides a good s
 A DLNA DMS makes the files on the HTPC server available to Digital Media
 Player (DMP) and Digital Media Controller (DMC) devices. 
 
-#### Mediatomb ####
+##### Mediatomb #####
 [MediaTomb](http://mediatomb.cc/) is a solid DMS. In the setup described here, it is used primarily for video. Any media rsync'd from the seedbox will be available immediately thanks to the wb_rsync script. In the examples below, MediaTomb is setup to scan /localmedia/video for new media.
 
-#### MiniDLNA ####
+##### MiniDLNA #####
 [MiniDLNA](http://sourceforge.net/projects/minidlna/) is a bare-bones media
 server which also works well. Sometimes it's nice to have two separate servers,
 which poses no problem as long as they run on different ports.
 
-#### Squeezebox Server ####
+##### Squeezebox Server #####
 I stream my mp3 collection to the stereo with an outdated [Squeezebox Duet](http://www.logitech.com/en-us/support/speakers-audio/3817). The current product is the [Squeezebox Touch](http://www.logitech.com/en-us/speakers-audio/wireless-music-systems/squeezebox-touch). The HTCP server runs the [Logitech Media Server](http://en.wikipedia.org/wiki/Logitech_Media_Server) software which indexes and makes music files available through the Squeezebox hardware, which connects to your A/V receiver. Squeezebox Server is also a DLNA DMS.
 
 The squeezebox software can additionally point to the rsync'd download location (/localmedia/downloaded), so all mp3 downloads can be available on the stereo shortly after they are rsync'd. 
