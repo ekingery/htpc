@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+echo "\n\n-----\nAttempting sync at"
+date
+
+# sync all non excluded files from the seedbox back to the local machine
+rsync -avlhP --no-perms --chmod=ugo=rwX --exclude-from '~/misc/whatbox_rsync_excludes' --delete -e 'ssh -i ~/.ssh/id_rsa' username@whatbox:~/seeding/ /localmedia/downloaded
+
+echo "\n\n--\nAttempting unrar at"
+date
+
+# many torrents contain rar compressed files, extract the goodies
+cd /localmedia/video
+/usr/bin/rar e -o- -r -idcp /localmedia/downloaded/*.rar 
+
+echo "\n\n-----\nFinished sync at"
+date
