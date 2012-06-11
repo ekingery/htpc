@@ -40,7 +40,7 @@ A DLNA DMS makes the files on the HTPC server available to Digital Media
 Player (DMP) and Digital Media Controller (DMC) devices. 
 
 ##### Mediatomb #####
-[MediaTomb](http://mediatomb.cc/) is a solid DMS. In the setup described here, it is used primarily for video. Any media rsync'd from the seedbox will be available immediately thanks to the [wb_rsync script](blob/master/wb_rsync). In the examples below, MediaTomb is setup to scan /localmedia/video for new media.
+[MediaTomb](http://mediatomb.cc/) is a solid DMS. In the setup described here, it is used primarily for video. Any media rsync'd from the seedbox will be available immediately thanks to the [wb_rsync script](htpc/blob/master/wb_rsync). In the examples below, MediaTomb is setup to scan /localmedia/video for new media.
 
 ##### MiniDLNA #####
 [MiniDLNA](http://sourceforge.net/projects/minidlna/) is a bare-bones media
@@ -53,7 +53,7 @@ I stream my mp3 collection to the stereo with an outdated [Squeezebox Duet](http
 The squeezebox software can additionally point to the rsync'd download location (/localmedia/downloaded), so all mp3 downloads can be available on the stereo shortly after they are rsync'd. 
 
 ### Continuous rsync script - wb_rsync ###
-This script is run out of cron to continuously sync all media downloaded from the seedbox. The [script source is available](blob/master/wb_rsync) in this repo. The cron job below uses setlock from the daemontools package to prevent process stacking / overlap.
+This script is run out of cron to continuously sync all media downloaded from the seedbox. The [script source is available](htpc/blob/master/wb_rsync) in this repo. The cron job below uses setlock from the daemontools package to prevent process stacking / overlap.
 
 	*/14 * * * * /usr/bin/setlock -nX ~/var/run/wb_rysnc.lock ~/bin/wb_rsync 2>&1 >> /var/log/wb_rsync.log 
 
