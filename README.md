@@ -5,16 +5,13 @@ Because cable TV is ridiculous.
 
 There are a variety of options available to setup a home entertainment system which plays media from a computer. The following is a description of the setup I've been using since about 2009, which focuses on open-source Linux-based technologies.
 
-Use a [quiet PC](http://en.wikipedia.org/wiki/Quiet_PC) running Linux as an [HTPC](http://en.wikipedia.org/wiki/Htpc). The flow for new media starts with a torrent file downloaded from any computer. The torrent files are then scp'd to a [seedbox](http://en.wikipedia.org/wiki/Seedbox) for quick downloading. A cron job running on the HTPC securely syncs the downloaded media. Once downloaded, DLNA is used to make the media available for consumption via a stereo or TV. 
+Start with a [quiet PC](http://en.wikipedia.org/wiki/Quiet_PC) running Linux as your [HTPC](http://en.wikipedia.org/wiki/Htpc). The flow for new media starts with a torrent file downloaded from any computer. The torrent files are then scp'd to a [seedbox](http://en.wikipedia.org/wiki/Seedbox) for quick downloading. A cron job running on the HTPC securely syncs the downloaded media. Once downloaded, DLNA is used to make the media available for consumption via a stereo or TV. 
 
 The setup should be straight forward, although unfortunately it can be time consuming and a bit intimidating depending on your comfort level with Linux. Hopefully this repository will provide some assistance to those interested in a similar setup.
 
 * [HTPC Linux Server](#htpc-linux-server)
     * [DLNA](#dlna)
     * [DLNA Digital Media Server (DMS)](#dlna-digital-media-server-dms)
-        * [Mediatomb](#mediatomb)
-        * [MiniDLNA](#minidlna)
-        * [Squeezebox Server](#squeezebox-server)
     * [Continuous rsync script - wb_rsync](#continuous-rsync-script---wb_rsync)
     * [DYNDNS](#dyndns)
 
@@ -26,8 +23,6 @@ The setup should be straight forward, although unfortunately it can be time cons
     * [Torrent Downloads](#torrent-downloads)
 
 * [DLNA Digital Media Player (DMP)](#dlna-digital-media-player-dmp)
-    * [WD Live TV Plus](#wd-live-tv-plus)
-    * [Squeezebox](#squeezebox)
 
 ![htpc schema](htpc/raw/master/htpc.png "HTPC Schema")
 
@@ -45,7 +40,7 @@ A DLNA DMS makes the files on the HTPC server available to Digital Media
 Player (DMP) and Digital Media Controller (DMC) devices. 
 
 ##### Mediatomb #####
-[MediaTomb](http://mediatomb.cc/) is a solid DMS. In the setup described here, it is used primarily for video. Any media rsync'd from the seedbox will be available immediately thanks to the wb_rsync script. In the examples below, MediaTomb is setup to scan /localmedia/video for new media.
+[MediaTomb](http://mediatomb.cc/) is a solid DMS. In the setup described here, it is used primarily for video. Any media rsync'd from the seedbox will be available immediately thanks to the [wb_rsync script](blob/master/wb_rsync). In the examples below, MediaTomb is setup to scan /localmedia/video for new media.
 
 ##### MiniDLNA #####
 [MiniDLNA](http://sourceforge.net/projects/minidlna/) is a bare-bones media
@@ -58,7 +53,7 @@ I stream my mp3 collection to the stereo with an outdated [Squeezebox Duet](http
 The squeezebox software can additionally point to the rsync'd download location (/localmedia/downloaded), so all mp3 downloads can be available on the stereo shortly after they are rsync'd. 
 
 ### Continuous rsync script - wb_rsync ###
-This script is run out of cron to continuously sync all media downloaded from the seedbox. The script source is uploaded to this repo. The cron job below uses setlock from the daemontools package to prevent process stacking / overlap.
+This script is run out of cron to continuously sync all media downloaded from the seedbox. The [script source is available](blob/master/wb_rsync) in this repo. The cron job below uses setlock from the daemontools package to prevent process stacking / overlap.
 
 	*/14 * * * * /usr/bin/setlock -nX ~/var/run/wb_rysnc.lock ~/bin/wb_rsync 2>&1 >> /var/log/wb_rsync.log 
 
