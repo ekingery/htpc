@@ -3,8 +3,9 @@
 echo "\n\n-----\nAttempting sync at"
 date
 
-# sync all non excluded files from the seedbox back to the local machine
-rsync -avlhP --no-perms --chmod=ugo=rwX --exclude-from '~/misc/whatbox_rsync_excludes' --delete -e 'ssh -i ~/.ssh/id_rsa' username@whatbox:~/seeding/ /localmedia/downloaded
+# sync all files from the seedbox back to the local HTPC
+rsync -avlhP --no-perms --chmod=ugo=rwX --delete -e 'ssh -i ~/.ssh/id_rsa'
+username@whatbox:~/seeding/ /localmedia/downloaded
 
 echo "\n\n--\nAttempting unrar at"
 date
