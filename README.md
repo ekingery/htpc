@@ -9,22 +9,25 @@ Use a [quiet PC](http://en.wikipedia.org/wiki/Quiet_PC) running Linux as an [HTP
 
 The setup should be straight forward, although unfortunately it can be time consuming and a bit intimidating depending on your comfort level with Linux. Hopefully this repository will provide some assistance to those interested in a similar setup.
 
-[HTPC Linux Server](#htpc-linux-server)
-		- [DLNA](#dlna)
-		- [DLNA Digital Media Server (DMS)](#dlna-digital-media-server-dms)
-				- [Mediatomb](#mediatomb)
-				- [MiniDLNA](#minidlna)
-				- [Squeezebox Server](#squeezebox-server)
-		- [Continuous rsync script - wb_rsync](#continuous-rsync-script---wb_rsync)
-		- [DYNDNS](#dyndns)
-- [Seedbox](#seedbox)
-		- [rTorrent](#rtorrent)
-		- [irssi](#irssi)
-- [Downloading torrents using any computer](#downloading-torrents-using-any-computer)
-		- [Torrent Downloads](#torrent-downloads)
-- [DLNA Digital Media Player (DMP)](#dlna-digital-media-player-dmp)
-		- [WD Live TV Plus](#wd-live-tv-plus)
-		- [Squeezebox](#squeezebox)
+* [HTPC Linux Server](#htpc-linux-server)
+    * [DLNA](#dlna)
+    * [DLNA Digital Media Server (DMS)](#dlna-digital-media-server-dms)
+        * [Mediatomb](#mediatomb)
+        * [MiniDLNA](#minidlna)
+        * [Squeezebox Server](#squeezebox-server)
+    * [Continuous rsync script - wb_rsync](#continuous-rsync-script---wb_rsync)
+    * [DYNDNS](#dyndns)
+
+* [Seedbox](#seedbox)
+    * [rTorrent](#rtorrent)
+    * [irssi](#irssi)
+
+* [Downloading torrents using any computer](#downloading-torrents-using-any-computer)
+    * [Torrent Downloads](#torrent-downloads)
+
+* [DLNA Digital Media Player (DMP)](#dlna-digital-media-player-dmp)
+    * [WD Live TV Plus](#wd-live-tv-plus)
+    * [Squeezebox](#squeezebox)
 
 ![htpc schema](htpc/raw/master/htpc.png "HTPC Schema")
 
