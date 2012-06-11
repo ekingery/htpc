@@ -30,7 +30,7 @@ Player (DMP) and Digital Media Controller (DMC) devices.
 ### MiniDLNA ###
 [MiniDLNA](http://sourceforge.net/projects/minidlna/) is a bare-bones media
 server which also works well. Sometimes it's nice to have two separate servers,
-which poses no problems as long as they run on different ports.
+which poses no problem as long as they run on different ports.
 
 ### Squeezebox Server ###
 I stream my mp3 collection to the stereo with an outdated [Squeezebox Duet](http://www.logitech.com/en-us/support/speakers-audio/3817). The current product is the [Squeezebox Touch](http://www.logitech.com/en-us/speakers-audio/wireless-music-systems/squeezebox-touch). The HTCP server runs the [Logitech Media Server](http://en.wikipedia.org/wiki/Logitech_Media_Server) software which indexes and makes music files available through the Squeezebox hardware, which connects to your A/V receiver. Squeezebox Server is also a DLNA DMS.
