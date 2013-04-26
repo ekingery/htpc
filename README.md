@@ -24,7 +24,7 @@ The setup should be straight forward, although unfortunately it can be time cons
 
 * [DLNA Digital Media Player (DMP)](#dlna-digital-media-player-dmp)
 
-![htpc schema](htpc/raw/master/htpc.png "HTPC Schema")
+![htpc schema](https://raw.github.com/ekingery/htpc/master/htpc.png "HTPC Schema")
 
 # HTPC Linux Server #
 This is the brain of the operation. I use an outdated MSI Wind PC running Ubuntu Server with WD Caviar Green drives. More modern hardware options include the MSI Wind Box or Asus Eee Box. Just about anything that runs whisper quiet and sports a reasonably sized hard disk should do the trick. 
